@@ -5,20 +5,31 @@
 </head>
 <body>
 
-<button class="home"><a href="">Home</a></button>
-<button class="makeRes"><a href="">MakeReservation</a></button>
-<div class="appendHere"></div>
+<button class="home"><a href="/">Home</a></button>
+<button class="makeRes"><a href="/submit">MakeReservation</a></button>
+<div class="appendHere">Reservations:</div>
+<div class="waitList">WaitList:</div>
 
 
 
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    for(i = 0; i<newRes.length;i++){
-      $.get("/api/" + newRes[i], function(data) {
-        console.log(data);
-            $(".appendHere").append("<div class = 'row'><div class='col-md-12'" + data.name)
-        });
-      };
+  
+      $.get("/reservations", function(data) {
+        // console.log(data);
+        for(i = 0; i<data.length;i++){
+        // console.log(data);
+            $(".appendHere").append("<div class = 'row'><div class='col-md-12'>" + data[i].name)
+        };
+      });
+
+      $.get("/waitList", function(data) {
+        // console.log(data);
+        for(i = 0; i<data.length;i++){
+        // console.log(data);
+            $(".waitList").append("<div class = 'row'><div class='col-md-12'>" + data[i].name)
+        };
+      });
 </script>
 </html>
