@@ -38,28 +38,23 @@ var waitList = [{
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function (req, res) {
-    // res.sendFile(path.join(__dirname, "index.html"));
-    console.log("success index")
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/submit", function (req, res) {
-    // res.sendFile(path.join(__dirname, "submit.html"));
-    console.log("success submit")
+    res.sendFile(path.join(__dirname, "submit.html"));
 });
 
 app.get("/tables", function (req, res) {
-    // res.sendFile(path.join(__dirname, "tables.html"));
-    console.log("success tables")
+    res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 // Get all reservations/waitlists
 app.get("/reservations", function (req, res) {
-    // res.json(reservations);
-    console.log(reservations)
+    res.json(reservations);
 });
 app.get("/waitlist", function (req, res) {
-    // res.json(waitList);
-    console.log(waitList)
+    res.json(waitList);
 });
 
 // Create New Reservations - takes in JSON input
@@ -73,10 +68,12 @@ app.post("/api/new", function (req, res) {
     if (reservations.length < 5) {
         reservations.push(newRes);
         res.json(newRes);
+        console.log("reservation")
     }
     else {
         waitList.push(newRes);
         res.json(newRes);
+        console.log("waitList")
     }
 });
 
