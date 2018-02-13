@@ -5,8 +5,8 @@
 </head>
 <body>
 
-<button class="home"><a href="">Home</a></button>
-<button class="viewTables"><a href="">View Tables</a></button>
+<button class="home"><a href="/">Home</a></button>
+<button class="viewTables"><a href="/tables">View Tables</a></button>
 <form>
     <div class="form-group">
           <label for="inputName">Name</label>
@@ -47,8 +47,7 @@ $(document).on("click",".submit",function(){
 
     $.post("/api/new", newUser)
       .then(function(data) {
-        console.log(data);
-        newRes.push(newUser);
+        console.log("data",data);
         alert("Adding character...");
 
       });
