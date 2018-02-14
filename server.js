@@ -20,6 +20,16 @@ var reservations = [{
   phone: "1234",
   email: "hello@mina.com",
   user: "m234",
+}, {
+  name: "katie",
+  phone: "1234",
+  email: "hello@mina.com",
+  user: "m234",
+}, {
+  name: "jeffrey",
+  phone: "1234",
+  email: "hello@mina.com",
+  user: "m234",
 }];
 var waitList = [];
 
@@ -63,8 +73,11 @@ app.post("/api/new", function (req, res) {
     }
 });
 
-app.delete('/delete', function (req, res) {
-  res.send('DELETE request to homepage');
+// Deletes an entry
+app.delete('/:index', function (req, res) {
+  var index = req.params.index;
+  reservations.splice(index, 1)
+  res.send(reservations);
 });
 
 // Starts the server to begin listening
