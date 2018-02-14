@@ -10,6 +10,7 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 24px;
     }
+
     .waitList {
       color: #1e76bd;
       font-family: Arial, Helvetica, sans-serif;
@@ -24,7 +25,18 @@
       font-size: 18px;
     }
 
-    .home {}
+    .home-icon {
+      color: #fff;
+    }
+
+    .jumbotron {
+      text-align: center;
+    }
+
+    .form-heading {
+      background: rgb(238, 238, 238);
+      font-size: 2rem;
+    }
   </style>
 </head>
 
@@ -38,29 +50,29 @@
       <a href="/">Home</a>
     </button>
     <button class="viewTables btn-primary btn-lg">
-      <a href="/tables">
+      <a href="/">
         <span class="home-icon glyphicon glyphicon-home" aria-hidden="true"></span>
       </a>
     </button>
     <button class="form btn-lg">
-        <a href="/submit">Make Reservation</a>
-      </button>
-      <button class="form btn-primary btn-lg">
-        <a href="/submit">
-          <span class="form-icon glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-        </a>
-      </button>
+      <a href="/submit">Make Reservation</a>
+    </button>
+    <button class="form btn-primary btn-lg">
+      <a href="/submit">
+        <span class="form-icon glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+      </a>
+    </button>
   </div>
 
   <div class="container">
     <div class="row">
-        <div class="col-md-12 appendHere">Reservations:</div>
-      </div>
+      <div class="col-md-12 appendHere">Reservations:</div>
+    </div>
 
     <div class="row">
       <div class="col-md-12 waitList">WaitList</div>
     </div>
-    </div>
+  </div>
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
