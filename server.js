@@ -15,23 +15,8 @@ app.use(bodyParser.json());
 
 // (DATA)
 // =============================================================
-var reservations = [{
-    name: "codi",
-    phone: "1234567",
-    email: "codi@codi.com",
-    id: "cs123"
-},{
-    name: "mina",
-    phone: "7654321",
-    email: "mina@mina.com",
-    id: "m123"
-}];
-var waitList = [{
-    name: "lauren",
-    phone: "7654321",
-    email: "lauren@mina.com",
-    id: "laur123"
-}];
+var reservations = [];
+var waitList = [];
 
 // Routes
 // =============================================================
