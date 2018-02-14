@@ -5,12 +5,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
   <style>
-  .home-icon {color: #fff;}
-  .jumbotron {text-align: center;}
-  .form-heading {
-    background: rgb(238, 238, 238);
-    font-size: 2rem;
-  }
+    .home-icon {
+      color: #fff;
+    }
+
+    .jumbotron {
+      text-align: center;
+    }
+
+    .form-heading {
+      background: rgb(238, 238, 238);
+      font-size: 2rem;
+    }
   </style>
 </head>
 
@@ -21,11 +27,13 @@
     <p class="lead">Make your reservation</p>
     <hr class="my-4">
     <button class="home btn-lg">
-      <a href="/">Home</a>
+      <a href="/">
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+      </a>
     </button>
     <button class="viewTables btn-primary btn-lg">
-      <a href="/tables">
-        <span class="home-icon glyphicon glyphicon-home" aria-hidden="true"></span>
+      <a href="/tables" class="home-icon">
+        View Tables
       </a>
     </button>
   </div>
