@@ -1,35 +1,99 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <style>
+    .appendHere {
+      color: #1e76bd;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 24px;
+    }
+    .waitList {
+      color: #1e76bd;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 24px;
+    }
+
+    .tablecol {
+      background-color: rgb(238, 238, 238);
+      color: rgb(51, 51, 51);
+      padding: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+    }
+
+    .home {}
+  </style>
 </head>
+
 <body>
+  <div class="jumbotron">
+    <h1 class="display-4">
+      <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>Hot Restaurant</h1>
+    <p class="lead">Make your reservation</p>
+    <hr class="my-4">
+    <button class="home btn-lg">
+      <a href="/">Home</a>
+    </button>
+    <button class="viewTables btn-primary btn-lg">
+      <a href="/tables">
+        <span class="home-icon glyphicon glyphicon-home" aria-hidden="true"></span>
+      </a>
+    </button>
+    <button class="form btn-lg">
+        <a href="/submit">Make Reservation</a>
+      </button>
+      <button class="form btn-primary btn-lg">
+        <a href="/submit">
+          <span class="form-icon glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+        </a>
+      </button>
+  </div>
 
-<button class="home"><a href="/">Home</a></button>
-<button class="makeRes"><a href="/submit">MakeReservation</a></button>
-<div class="appendHere">Reservations:</div>
-<div class="waitList">WaitList:</div>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12 appendHere">Reservations:</div>
+      </div>
 
-
-
+    <div class="row">
+      <div class="col-md-12 waitList">WaitList</div>
+    </div>
+    </div>
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-  
-      $.get("/reservations", function(data) {
-        // console.log(data);
-        for(i = 0; i<data.length;i++){
-        // console.log(data);
-            $(".appendHere").append("<div class = 'row'><div class='col-md-12'>" + data[i].name)
-        };
-      });
 
-      $.get("/waitList", function(data) {
-        // console.log(data);
-        for(i = 0; i<data.length;i++){
-        // console.log(data);
-            $(".waitList").append("<div class = 'row'><div class='col-md-12'>" + data[i].name)
-        };
-      });
+  $.get("/reservations", function (data) {
+    // console.log(data);
+    for (i = 0; i < data.length; i++) {
+      // console.log(data);
+      var newRow = $("<div class='row tablerow'>")
+      var newCol = $("<div class='col-md-12 tablecol'>")
+      console.log(data[i].name)
+      $(newCol).text(data[i].name)
+      $(newRow).append(newCol)
+
+      $(".appendHere").append(newRow)
+      $(".appendHere").append("<br>")
+    };
+  });
+
+  $.get("/waitList", function (data) {
+    // console.log(data);
+    for (i = 0; i < data.length; i++) {
+      // console.log(data);
+      var newRow = $("<div class='row tablerow'>")
+      var newCol = $("<div class='col-md-12 tablecol'>")
+      console.log(data[i].name)
+      $(newCol).text(data[i].name)
+      $(newRow).append(newCol)
+
+      $(".waitList").append(newRow)
+      $(".waitList").append("<br>")
+    };
+  });
 </script>
+
 </html>
