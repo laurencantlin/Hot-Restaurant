@@ -15,7 +15,22 @@ app.use(bodyParser.json());
 
 // (DATA)
 // =============================================================
-var reservations = [];
+var reservations = [{
+  name: "mina",
+  phone: "1234",
+  email: "hello@mina.com",
+  user: "m234",
+}, {
+  name: "katie",
+  phone: "1234",
+  email: "hello@mina.com",
+  user: "m234",
+}, {
+  name: "jeffrey",
+  phone: "1234",
+  email: "hello@mina.com",
+  user: "m234",
+}];
 var waitList = [];
 
 // Routes
@@ -44,11 +59,7 @@ app.get("/waitlist", function (req, res) {
 
 // Create New Reservations - takes in JSON input
 app.post("/api/new", function (req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body-parser middleware
     var newRes = req.body;
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
     console.log("NewRes",newRes);
     if (reservations.length < 5) {
         reservations.push(newRes);
@@ -60,6 +71,13 @@ app.post("/api/new", function (req, res) {
         res.json(newRes);
         console.log("waitList")
     }
+});
+
+// Deletes an entry
+app.delete('/:index', function (req, res) {
+  var index = req.params.index;
+  reservations.splice(index, 1)
+  res.send(reservations);
 });
 
 // Starts the server to begin listening

@@ -66,11 +66,13 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12 appendHere">Reservations:</div>
+      <h3>Reservations:</h3>
+      <div class="col-md-12 appendHere"></div>
     </div>
 
     <div class="row">
-      <div class="col-md-12 waitList">WaitList</div>
+      <h3>WaitList:</h3>
+      <div class="col-md-12 waitList"></div>
     </div>
   </div>
 </body>
@@ -78,14 +80,14 @@
 <script>
 
   $.get("/reservations", function (data) {
-    // console.log(data);
     for (i = 0; i < data.length; i++) {
-      // console.log(data);
-      var newRow = $("<div class='row tablerow'>")
-      var newCol = $("<div class='col-md-12 tablecol'>")
-      console.log(data[i].name)
+      var newRow = $("<div class='row tablerow'>");
+      var newCol = $("<div class='col-md-12 tablecol'>");
+      var deleteBtn = $("<button id='delete-btn' class='btn-primary'>").text("Delete");
+      deleteBtn.attr("data-index", i);
+      // console.log(data[i].name)
       $(newCol).text(data[i].name)
-      $(newRow).append(newCol)
+      $(newRow).append(newCol).append(deleteBtn);
 
       $(".appendHere").append(newRow)
       $(".appendHere").append("<br>")
@@ -93,9 +95,7 @@
   });
 
   $.get("/waitList", function (data) {
-    // console.log(data);
     for (i = 0; i < data.length; i++) {
-      // console.log(data);
       var newRow = $("<div class='row tablerow'>")
       var newCol = $("<div class='col-md-12 tablecol'>")
       console.log(data[i].name)
@@ -106,6 +106,31 @@
       $(".waitList").append("<br>")
     };
   });
+
+  $(document).on("click", "#delete-btn", function (event) {
+    var index = this.attributes[2].value;
+    $.ajax({
+      url: '/' + index,
+      method: 'DELETE',
+    })
+      .done(function (data) {
+        console.log(data);
+        $(".appendHere").empty();
+        for (i = 0; i < data.length; i++) {
+          // console.log(data);
+          var newRow = $("<div class='row tablerow'>");
+          var newCol = $("<div class='col-md-12 tablecol'>");
+          var deleteBtn = $("<button id='delete-btn' class='btn-primary'>").text("Delete");
+          deleteBtn.attr("data-index", i);
+          // console.log(data[i].name)
+          $(newCol).text(data[i].name)
+          $(newRow).append(newCol).append(deleteBtn);
+
+          $(".appendHere").append(newRow)
+          $(".appendHere").append("<br>")
+        };
+      });
+  })
 </script>
 
 </html>
